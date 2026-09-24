@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Burnout To Balance Registrations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --plane:#f5f6f8; --surface:#fcfcfb; --ink:#14171c; --ink-2:#4d5360; --muted:#7e8491;
+  --grid:#e3e5ea; --axis:#c4c8d0; --ring:rgba(20,23,28,.09); --accent:#23407a;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  --chip-warn-bg:#fff4dc; --chip-warn-ink:#7a4d00; --chip-ok-bg:#e6f6e6; --chip-ok-ink:#1d5e1d;
+  --chip-slow-bg:#eef1f6; --chip-slow-ink:#3c4455;
+  --tip-bg:#14171c; --tip-ink:#ffffff;
+  font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --plane:#0f1114; --surface:#1a1b1e; --ink:#f3f4f6; --ink-2:#c3c7cf; --muted:#8c919c;
+    --grid:#2a2d33; --axis:#3a3e46; --ring:rgba(255,255,255,.09); --accent:#9db5ea;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --chip-warn-bg:#3a2c0c; --chip-warn-ink:#ffd27a; --chip-ok-bg:#12301a; --chip-ok-ink:#8fe08f;
+    --chip-slow-bg:#23272f; --chip-slow-ink:#c3c7cf;
+    --tip-bg:#f3f4f6; --tip-ink:#14171c;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --plane:#0f1114; --surface:#1a1b1e; --ink:#f3f4f6; --ink-2:#c3c7cf; --muted:#8c919c;
+  --grid:#2a2d33; --axis:#3a3e46; --ring:rgba(255,255,255,.09); --accent:#9db5ea;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --chip-warn-bg:#3a2c0c; --chip-warn-ink:#ffd27a; --chip-ok-bg:#12301a; --chip-ok-ink:#8fe08f;
+  --chip-slow-bg:#23272f; --chip-slow-ink:#c3c7cf;
+  --tip-bg:#f3f4f6; --tip-ink:#14171c;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+[hidden]{display:none!important}
+body{background:var(--plane);color:var(--ink);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 4px}
+h1{font-size:clamp(24px,4vw,32px);line-height:1.15;margin:0;text-wrap:balance;font-weight:700}
+.sub{color:var(--ink-2);margin:6px 0 0}
+.stamp{font-size:13px;color:var(--muted);text-align:right}
+.stamp b{color:var(--ink-2);font-weight:600}
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:18px 20px}
+h2{font-size:17px;margin:0 0 4px;font-weight:650}
+.note{color:var(--muted);font-size:13px;margin:0 0 14px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:14px 16px}
+.kpi .l{font-size:12px;color:var(--ink-2);letter-spacing:.04em;text-transform:uppercase}
+.kpi .v{font-size:30px;font-weight:700;line-height:1.1;margin-top:4px}
+.kpi .d{font-size:13px;color:var(--muted);margin-top:2px}
+.cap{display:flex;flex-direction:column;gap:14px}
+.caprow{display:grid;grid-template-columns:160px 1fr 150px;gap:14px;align-items:center}
+.capname{display:flex;align-items:center;gap:8px;font-weight:600}
+.sw{width:10px;height:10px;border-radius:3px;flex:none}
+.meter{height:12px;background:var(--grid);border-radius:6px;overflow:hidden}
+.meter span{display:block;height:100%;border-radius:6px}
+.capnum{font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink-2);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.chip.warn{background:var(--chip-warn-bg);color:var(--chip-warn-ink)}
+.chip.ok{background:var(--chip-ok-bg);color:var(--chip-ok-ink)}
+.chip.slow{background:var(--chip-slow-bg);color:var(--chip-slow-ink)}
+.two{display:grid;grid-template-columns:1.35fr 1fr;gap:22px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);margin-bottom:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+svg text{fill:var(--muted);font-family:inherit;font-size:12px}
+svg .tot{fill:var(--ink);font-weight:600;font-size:12.5px}
+svg .lbl{fill:var(--ink-2)}
+.chart{position:relative}
+.tip{position:absolute;pointer-events:none;background:var(--tip-bg);color:var(--tip-ink);font-size:12.5px;padding:8px 10px;border-radius:6px;line-height:1.45;min-width:150px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.tip b{display:block;margin-bottom:2px}
+.tip .r{display:flex;justify-content:space-between;gap:14px;font-variant-numeric:tabular-nums}
+.tscroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);font-weight:600;border-bottom:1px solid var(--axis)}
+tfoot td{font-weight:700;border-bottom:none;border-top:1px solid var(--axis)}
+td.hot{font-weight:700}
+.trends{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.trends li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.trends p{margin:0;color:var(--ink-2);max-width:68ch}
+.trends strong{color:var(--ink)}
+footer{font-size:12.5px;color:var(--muted);max-width:75ch}
+@media (max-width:760px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two{grid-template-columns:1fr}
+  .caprow{grid-template-columns:1fr;gap:6px}
+  .stamp{text-align:left}
+}
+@media (prefers-reduced-motion:no-preference){.meter span{transition:width .6s ease}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow">BAPS Raleigh · Sun, Sep 27 · 10:00–11:30 AM</p>
+      <h1>Burnout To Balance — Registrations</h1>
+      <p class="sub">Pujya Gnanvatsal Swami's sabha · Eventbrite registrations by ticket type</p>
+    </div>
+    <div class="stamp">Snapshot <b>Thu, Sep 24 · 2:00 PM ET</b><br>Source: Eventbrite attendee report</div>
+  </header>
+
+  <section class="kpis" aria-label="Summary">
+    <div class="kpi"><div class="l">Registrations</div><div class="v">727</div><div class="d">+104 today so far</div></div>
+    <div class="kpi"><div class="l">Orders</div><div class="v">505</div><div class="d">44% are for 2 tickets</div></div>
+    <div class="kpi"><div class="l">Capacity used</div><div class="v">45%</div><div class="d">of 1,600 seats</div></div>
+    <div class="kpi"><div class="l">Seats left</div><div class="v">873</div><div class="d">427 of them Karyakar</div></div>
+  </section>
+
+  <section class="panel">
+    <h2>Capacity by ticket</h2>
+    <p class="note">Seat limits as of the morning of Sep 24.</p>
+    <div class="cap" id="cap"></div>
+  </section>
+
+  <div class="two">
+    <section class="panel">
+      <h2>Registrations by day</h2>
+      <p class="note">Stacked by ticket type. Hover a bar for the breakdown.</p>
+      <div class="legend" id="legend"></div>
+      <div class="chart" id="daychart"></div>
+    </section>
+    <section class="panel">
+      <h2>Guest professions</h2>
+      <p class="note">Asked on Special Guest and Invited Guests tickets only · 457 people, 270 left it blank.</p>
+      <div class="chart" id="profchart"></div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h2>Daily breakdown</h2>
+    <p class="note">The table view of the chart above.</p>
+    <div class="tscroll"><table id="daytable"></table></div>
+  </section>
+
+  <div class="two">
+    <section class="panel">
+      <h2>Highlights</h2>
+      <p class="note">From the latest snapshot.</p>
+      <ul class="trends">
+        <li><span class="chip warn">▲ Filling fast</span><p><strong>Special Guest is filling fastest.</strong> 48 registrations between 10 AM and noon on Sep 24, with 99 seats left.</p></li>
+        <li><span class="chip slow">● Slowed</span><p><strong>Karyakar registrations peaked on day one.</strong> 162 on the first day, 11 on Sep 24. 427 seats remain.</p></li>
+        <li><span class="chip slow">● Steady</span><p><strong>BKY is holding steady.</strong> 96 registrations by Sep 23, 1 since.</p></li>
+        <li><span class="chip slow">● Slowing</span><p><strong>Invited Guests is tapering.</strong> 96 on its peak day, 27 on Sep 24.</p></li>
+        <li><span class="chip ok">✓ Timing</span><p><strong>Late morning is the busiest time.</strong> 11 AM is the peak hour of the week (122 registrations), followed by 10 AM (76) and 9 PM (60).</p></li>
+      </ul>
+    </section>
+    <section class="panel">
+      <h2>Today, hour by hour</h2>
+      <p class="note">Thu, Sep 24 · Eastern time.</p>
+      <div class="tscroll"><table id="hourtable"></table></div>
+    </section>
+  </div>
+
+  <footer>Counts only — no attendee details are shown on this page. Location is left out on purpose: Eventbrite infers it from each person's internet provider, which places many local registrations in Charlotte or Ashburn, VA.</footer>
+</div>
+
+<script>
+const TYPES=[
+  {key:"sg",name:"Special Guest",color:"var(--s1)",cap:300},
+  {key:"ig",name:"Invited Guests",color:"var(--s2)",cap:500},
+  {key:"bky",name:"BKY Admission",color:"var(--s3)",cap:200},
+  {key:"ky",name:"Karyakar Admission",color:"var(--s4)",cap:600}
+];
+const DAYS=[
+  {d:"Sun, Sep 20",short:"Sep 20",sg:0,ig:8,bky:0,ky:0},
+  {d:"Mon, Sep 21",short:"Sep 21",sg:3,ig:42,bky:0,ky:0},
+  {d:"Tue, Sep 22",short:"Sep 22",sg:56,ig:96,bky:71,ky:0},
+  {d:"Wed, Sep 23",short:"Sep 23",sg:77,ig:83,bky:25,ky:162},
+  {d:"Thu, Sep 24 (to 2 PM)",short:"Sep 24*",sg:65,ig:27,bky:1,ky:11}
+];
+const HOURS=[
+  {h:"5–9 AM",sg:4,ig:12,ky:6,bky:0},
+  {h:"10 AM",sg:19,ig:3,ky:2,bky:1},
+  {h:"11 AM",sg:29,ig:6,ky:2,bky:0},
+  {h:"12 PM",sg:6,ig:4,ky:0,bky:0},
+  {h:"1 PM",sg:7,ig:2,ky:1,bky:0}
+];
+const PROF=[
+  ["IT / Software",91],["Healthcare / Medical",60],["Retired",55],["Business / Management",48],
+  ["Finance / Accounting",46],["Self-employed / Owner",34],["Engineering (non-IT)",33],["Other",30],
+  ["Homemaker",25],["Student",14],["Education / Govt / Sales / Legal",21]
+];
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
+const fmt=n=>n.toLocaleString("en-US");
+const tot=r=>TYPES.reduce((s,t)=>s+r[t.key],0);
+
+const sold={};TYPES.forEach(t=>sold[t.key]=DAYS.reduce((s,d)=>s+d[t.key],0));
+const cap=document.getElementById("cap");
+TYPES.forEach(t=>{
+  const pct=Math.round(sold[t.key]/t.cap*100);
+  const chip=pct>=60?'<span class="chip warn">▲ Filling fast</span>':(t.key==="ky"||t.key==="bky")?'<span class="chip slow">● Room left</span>':'<span class="chip ok">✓ On track</span>';
+  const row=document.createElement("div");row.className="caprow";
+  row.innerHTML=`<div class="capname"><span class="sw" style="background:${t.color}"></span>${t.name}</div>
+  <div class="meter" role="img" aria-label="${t.name}: ${pct}% full"><span style="width:${pct}%;background:${t.color}"></span></div>
+  <div class="capnum"><span>${fmt(sold[t.key])} / ${fmt(t.cap)} · ${pct}%</span>${chip}</div>`;
+  cap.appendChild(row);
+});
+
+const lg=document.getElementById("legend");
+TYPES.forEach(t=>{const s=document.createElement("span");s.innerHTML=`<i class="sw" style="background:${t.color}"></i>${t.name}`;lg.appendChild(s);});
+
+(function(){
+  const host=document.getElementById("daychart");
+  const W=520,H=270,m={t:22,r:8,b:30,l:38},iw=W-m.l-m.r,ih=H-m.t-m.b,max=400;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",role:"img","aria-label":"Registrations by day, stacked by ticket type"},host);
+  const y=v=>m.t+ih-v/max*ih;
+  [0,100,200,300,400].forEach(v=>{
+    el("line",{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),stroke:v===0?"var(--axis)":"var(--grid)","stroke-width":1},svg);
+    const tx=el("text",{x:m.l-8,y:y(v)+4,"text-anchor":"end"},svg);tx.textContent=v;
+  });
+  const band=iw/DAYS.length,bw=Math.min(54,band*0.56);
+  const tip=document.createElement("div");tip.className="tip";tip.hidden=true;host.appendChild(tip);
+  DAYS.forEach((d,i)=>{
+    const cx=m.l+band*i+band/2,x=cx-bw/2;let acc=0;
+    const vis=TYPES.filter(t=>d[t.key]>0);
+    vis.forEach((t,j)=>{
+      const v=d[t.key],y0=y(acc),y1=y(acc+v),top=j===vis.length-1;
+      const h=Math.max(0,y0-y1-(acc>0?2:0));
+      const yy=y1;
+      if(top){
+        const r=Math.min(4,h);
+        el("path",{d:`M${x},${yy+h} V${yy+r} Q${x},${yy} ${x+r},${yy} H${x+bw-r} Q${x+bw},${yy} ${x+bw},${yy+r} V${yy+h} Z`,fill:t.color},svg);
+      }else el("rect",{x,y:yy,width:bw,height:h,fill:t.color},svg);
+      acc+=v;
+    });
+    const tt=el("text",{x:cx,y:y(acc)-6,"text-anchor":"middle",class:"tot"},svg);tt.textContent=tot(d);
+    const lb=el("text",{x:cx,y:H-10,"text-anchor":"middle",class:"lbl"},svg);lb.textContent=d.short;
+    const hit=el("rect",{x:m.l+band*i,y:m.t,width:band,height:ih,fill:"transparent"},svg);
+    const show=ev=>{
+      tip.innerHTML=`<b>${d.d}</b>`+TYPES.map(t=>`<div class="r"><span>${t.name}</span><span>${d[t.key]}</span></div>`).join("")+`<div class="r" style="margin-top:3px;font-weight:700"><span>Total</span><span>${tot(d)}</span></div>`;
+      tip.hidden=false;
+      const hb=host.getBoundingClientRect(),sb=svg.getBoundingClientRect();
+      const px=(cx/W)*sb.width+(sb.left-hb.left);
+      let left=px+12;if(left+tip.offsetWidth>hb.width)left=px-tip.offsetWidth-12;
+      tip.style.left=Math.max(0,left)+"px";tip.style.top="30px";
+    };
+    hit.addEventListener("mousemove",show);hit.addEventListener("mouseleave",()=>tip.hidden=true);
+  });
+})();
+
+(function(){
+  const host=document.getElementById("profchart");
+  const rowH=24,W=420,lw=180,m={t:4,r:34,b:4},H=m.t+m.b+PROF.length*rowH,max=100,iw=W-lw-m.r;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",role:"img","aria-label":"Guest professions, number of people"},host);
+  const tip=document.createElement("div");tip.className="tip";tip.hidden=true;host.appendChild(tip);
+  const total=PROF.reduce((s,p)=>s+p[1],0);
+  PROF.forEach(([n,v],i)=>{
+    const yy=m.t+i*rowH,bh=14,by=yy+(rowH-bh)/2,w=v/max*iw;
+    const t=el("text",{x:lw-10,y:by+bh-3,"text-anchor":"end",class:"lbl"},svg);t.textContent=n;
+    el("path",{d:`M${lw},${by} H${lw+w-4} Q${lw+w},${by} ${lw+w},${by+4} V${by+bh-4} Q${lw+w},${by+bh} ${lw+w-4},${by+bh} H${lw} Z`,fill:"var(--s1)"},svg);
+    const vt=el("text",{x:lw+w+6,y:by+bh-3,class:"tot"},svg);vt.textContent=v;
+    const hit=el("rect",{x:0,y:yy,width:W,height:rowH,fill:"transparent"},svg);
+    hit.addEventListener("mousemove",()=>{
+      tip.innerHTML=`<b>${n}</b><div class="r"><span>People</span><span>${v}</span></div><div class="r"><span>Of those answering</span><span>${Math.round(v/total*100)}%</span></div>`;
+      tip.hidden=false;
+      const hb=host.getBoundingClientRect(),sb=svg.getBoundingClientRect();
+      tip.style.left=Math.min(hb.width-tip.offsetWidth,((lw+w)/W)*sb.width+10)+"px";
+      tip.style.top=((yy+rowH)/H*sb.height+(sb.top-hb.top))+"px";
+    });
+    hit.addEventListener("mouseleave",()=>tip.hidden=true);
+  });
+})();
+
+(function(){
+  const t=document.getElementById("daytable");
+  let run=0;
+  let h=`<thead><tr><th>Day</th>${TYPES.map(x=>`<th>${x.name}</th>`).join("")}<th>Total</th><th>Running total</th></tr></thead><tbody>`;
+  DAYS.forEach(d=>{run+=tot(d);h+=`<tr><td>${d.d}</td>${TYPES.map(x=>`<td>${d[x.key]}</td>`).join("")}<td class="hot">${tot(d)}</td><td>${fmt(run)}</td></tr>`;});
+  h+=`</tbody><tfoot><tr><td>Total</td>${TYPES.map(x=>`<td>${sold[x.key]}</td>`).join("")}<td>${fmt(run)}</td><td></td></tr></tfoot>`;
+  t.innerHTML=h;
+  const ht=document.getElementById("hourtable");
+  let s=`<thead><tr><th>Hour</th><th>Special</th><th>Invited</th><th>Karyakar</th><th>BKY</th><th>Total</th></tr></thead><tbody>`;
+  let T={sg:0,ig:0,ky:0,bky:0};
+  HOURS.forEach(r=>{const tt=r.sg+r.ig+r.ky+r.bky;["sg","ig","ky","bky"].forEach(k=>T[k]+=r[k]);
+    s+=`<tr><td>${r.h}</td><td class="${r.sg>=15?"hot":""}">${r.sg}</td><td>${r.ig}</td><td>${r.ky}</td><td>${r.bky}</td><td>${tt}</td></tr>`;});
+  s+=`</tbody><tfoot><tr><td>Total</td><td>${T.sg}</td><td>${T.ig}</td><td>${T.ky}</td><td>${T.bky}</td><td>${T.sg+T.ig+T.ky+T.bky}</td></tr></tfoot>`;
+  ht.innerHTML=s;
+})();
+</script>
+
+</body>
+</html>
