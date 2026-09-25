@@ -109,19 +109,19 @@ footer{font-size:12.5px;color:var(--muted);max-width:75ch}
       <h1>Burnout To Balance — Registrations</h1>
       <p class="sub">Pujya Gnanvatsal Swami's sabha · Eventbrite registrations by ticket type</p>
     </div>
-    <div class="stamp">Snapshot <b>Thu, Sep 24 · 2:00 PM ET</b><br>Source: Eventbrite attendee report</div>
+    <div class="stamp">Snapshot <b>Thu, Sep 24 · 8:36 PM ET</b><br>Source: Eventbrite attendee report</div>
   </header>
 
   <section class="kpis" aria-label="Summary">
-    <div class="kpi"><div class="l">Registrations</div><div class="v">727</div><div class="d">+104 today so far</div></div>
-    <div class="kpi"><div class="l">Orders</div><div class="v">505</div><div class="d">44% are for 2 tickets</div></div>
-    <div class="kpi"><div class="l">Capacity used</div><div class="v">45%</div><div class="d">of 1,600 seats</div></div>
-    <div class="kpi"><div class="l">Seats left</div><div class="v">873</div><div class="d">427 of them Karyakar</div></div>
+    <div class="kpi"><div class="l">Registrations</div><div class="v">797</div><div class="d">+175 on Sep 24</div></div>
+    <div class="kpi"><div class="l">Orders</div><div class="v">575</div><div class="d">39% are for 2 tickets</div></div>
+    <div class="kpi"><div class="l">Capacity used</div><div class="v">50%</div><div class="d">of 1,600 seats</div></div>
+    <div class="kpi"><div class="l">Seats left</div><div class="v">803</div><div class="d">Only 53 Special Guest</div></div>
   </section>
 
   <section class="panel">
     <h2>Capacity by ticket</h2>
-    <p class="note">Seat limits as of the morning of Sep 24.</p>
+    <p class="note">Seat limits as of Sep 24.</p>
     <div class="cap" id="cap"></div>
   </section>
 
@@ -134,7 +134,7 @@ footer{font-size:12.5px;color:var(--muted);max-width:75ch}
     </section>
     <section class="panel">
       <h2>Guest professions</h2>
-      <p class="note">Asked on Special Guest and Invited Guests tickets only · 457 people, 270 left it blank.</p>
+      <p class="note">Asked on Special Guest and Invited Guests tickets only · 515 people.</p>
       <div class="chart" id="profchart"></div>
     </section>
   </div>
@@ -150,11 +150,11 @@ footer{font-size:12.5px;color:var(--muted);max-width:75ch}
       <h2>Highlights</h2>
       <p class="note">From the latest snapshot.</p>
       <ul class="trends">
-        <li><span class="chip warn">▲ Filling fast</span><p><strong>Special Guest is filling fastest.</strong> 48 registrations between 10 AM and noon on Sep 24, with 99 seats left.</p></li>
-        <li><span class="chip slow">● Slowed</span><p><strong>Karyakar registrations peaked on day one.</strong> 162 on the first day, 11 on Sep 24. 427 seats remain.</p></li>
-        <li><span class="chip slow">● Steady</span><p><strong>BKY is holding steady.</strong> 96 registrations by Sep 23, 1 since.</p></li>
-        <li><span class="chip slow">● Slowing</span><p><strong>Invited Guests is tapering.</strong> 96 on its peak day, 27 on Sep 24.</p></li>
-        <li><span class="chip ok">✓ Timing</span><p><strong>Late morning is the busiest time.</strong> 11 AM is the peak hour of the week (122 registrations), followed by 10 AM (76) and 9 PM (60).</p></li>
+        <li><span class="chip warn">▲ Nearly full</span><p><strong>Special Guest is almost full.</strong> 112 registrations on Sep 24 alone. 247 of 300 seats are taken, leaving 53.</p></li>
+        <li><span class="chip slow">● Slowed</span><p><strong>Karyakar registrations peaked on day one.</strong> 162 on the first day, 15 on Sep 24. 423 seats remain.</p></li>
+        <li><span class="chip slow">● Steady</span><p><strong>BKY picked up slightly.</strong> 105 registered, with 9 more on Sep 24.</p></li>
+        <li><span class="chip slow">● Slowing</span><p><strong>Invited Guests is tapering.</strong> 96 on its peak day, 39 on Sep 24.</p></li>
+        <li><span class="chip ok">✓ Timing</span><p><strong>Late morning is the busiest time.</strong> 11 AM is the peak hour of the week (122 registrations), followed by 10 AM (76) and 2 PM (71).</p></li>
       </ul>
     </section>
     <section class="panel">
@@ -178,20 +178,27 @@ const DAYS=[
   {d:"Sun, Sep 20",short:"Sep 20",sg:0,ig:8,bky:0,ky:0},
   {d:"Mon, Sep 21",short:"Sep 21",sg:3,ig:42,bky:0,ky:0},
   {d:"Tue, Sep 22",short:"Sep 22",sg:56,ig:96,bky:71,ky:0},
-  {d:"Wed, Sep 23",short:"Sep 23",sg:77,ig:83,bky:25,ky:162},
-  {d:"Thu, Sep 24 (to 2 PM)",short:"Sep 24*",sg:65,ig:27,bky:1,ky:11}
+  {d:"Wed, Sep 23",short:"Sep 23",sg:76,ig:83,bky:25,ky:162},
+  {d:"Thu, Sep 24 (to 8:30 PM)",short:"Sep 24*",sg:112,ig:39,bky:9,ky:15}
 ];
 const HOURS=[
   {h:"5–9 AM",sg:4,ig:12,ky:6,bky:0},
   {h:"10 AM",sg:19,ig:3,ky:2,bky:1},
   {h:"11 AM",sg:29,ig:6,ky:2,bky:0},
   {h:"12 PM",sg:6,ig:4,ky:0,bky:0},
-  {h:"1 PM",sg:7,ig:2,ky:1,bky:0}
+  {h:"1 PM",sg:7,ig:2,ky:1,bky:0},
+  {h:"2 PM",sg:15,ig:0,ky:1,bky:0},
+  {h:"3 PM",sg:6,ig:1,ky:1,bky:2},
+  {h:"4 PM",sg:6,ig:2,ky:1,bky:0},
+  {h:"5 PM",sg:2,ig:3,ky:0,bky:1},
+  {h:"6 PM",sg:6,ig:5,ky:1,bky:0},
+  {h:"7 PM",sg:8,ig:1,ky:0,bky:4},
+  {h:"8 PM",sg:4,ig:0,ky:0,bky:1}
 ];
 const PROF=[
-  ["IT / Software",91],["Healthcare / Medical",60],["Retired",55],["Business / Management",48],
-  ["Finance / Accounting",46],["Self-employed / Owner",34],["Engineering (non-IT)",33],["Other",30],
-  ["Homemaker",25],["Student",14],["Education / Govt / Sales / Legal",21]
+  ["IT / Software",93],["Retired",68],["Healthcare / Medical",65],["Business / Management",51],
+  ["Finance / Accounting",46],["Engineering (non-IT)",37],["Self-employed / Owner",36],["Homemaker",32],
+  ["Student",21],["Education / Govt / Sales / Legal",21],["Other",45]
 ];
 const NS="http://www.w3.org/2000/svg";
 const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
@@ -202,7 +209,7 @@ const sold={};TYPES.forEach(t=>sold[t.key]=DAYS.reduce((s,d)=>s+d[t.key],0));
 const cap=document.getElementById("cap");
 TYPES.forEach(t=>{
   const pct=Math.round(sold[t.key]/t.cap*100);
-  const chip=pct>=60?'<span class="chip warn">▲ Filling fast</span>':(t.key==="ky"||t.key==="bky")?'<span class="chip slow">● Room left</span>':'<span class="chip ok">✓ On track</span>';
+  const chip=pct>=80?'<span class="chip warn">▲ Nearly full</span>':pct>=60?'<span class="chip warn">▲ Filling fast</span>':(t.key==="ky"||t.key==="bky")?'<span class="chip slow">● Room left</span>':'<span class="chip ok">✓ On track</span>';
   const row=document.createElement("div");row.className="caprow";
   row.innerHTML=`<div class="capname"><span class="sw" style="background:${t.color}"></span>${t.name}</div>
   <div class="meter" role="img" aria-label="${t.name}: ${pct}% full"><span style="width:${pct}%;background:${t.color}"></span></div>
