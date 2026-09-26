@@ -109,19 +109,19 @@ footer{font-size:12.5px;color:var(--muted);max-width:75ch}
       <h1>Burnout To Balance — Registrations</h1>
       <p class="sub">Pujya Gnanvatsal Swami's sabha · Eventbrite registrations by ticket type</p>
     </div>
-    <div class="stamp">Snapshot <b>Fri, Sep 25 · 9:23 AM ET</b><br>Source: Eventbrite attendee report</div>
+    <div class="stamp">Snapshot <b>Sat, Sep 26 · 10:20 AM ET</b><br>Source: Eventbrite attendee report</div>
   </header>
 
   <section class="kpis" aria-label="Summary">
-    <div class="kpi"><div class="l">Registrations</div><div class="v">834</div><div class="d">+7 since midnight</div></div>
-    <div class="kpi"><div class="l">Orders</div><div class="v">612</div><div class="d">36% are for 2 tickets</div></div>
-    <div class="kpi"><div class="l">Capacity used</div><div class="v">56%</div><div class="d">of 1,500 seats</div></div>
-    <div class="kpi"><div class="l">Seats left</div><div class="v">666</div><div class="d">142 of them Special Guest</div></div>
+    <div class="kpi"><div class="l">Registrations</div><div class="v">954</div><div class="d">+14 since midnight</div></div>
+    <div class="kpi"><div class="l">Orders</div><div class="v">732</div><div class="d">30% are for 2 tickets</div></div>
+    <div class="kpi"><div class="l">Capacity used</div><div class="v">68%</div><div class="d">of 1,400 seats</div></div>
+    <div class="kpi"><div class="l">Seats left</div><div class="v">446</div><div class="d">96 of them Karyakar</div></div>
   </section>
 
   <section class="panel">
     <h2>Capacity by ticket</h2>
-    <p class="note">Seat limits as of Sep 25. Special Guest raised to 400; Karyakar set to 400.</p>
+    <p class="note">Seat limits as of Sep 26. Karyakar reduced to 300.</p>
     <div class="cap" id="cap"></div>
   </section>
 
@@ -134,7 +134,7 @@ footer{font-size:12.5px;color:var(--muted);max-width:75ch}
     </section>
     <section class="panel">
       <h2>Guest professions</h2>
-      <p class="note">Asked on Special Guest and Invited Guests tickets only · 545 people.</p>
+      <p class="note">Asked on Special Guest and Invited Guests tickets only · 638 people.</p>
       <div class="chart" id="profchart"></div>
     </section>
   </div>
@@ -150,16 +150,16 @@ footer{font-size:12.5px;color:var(--muted);max-width:75ch}
       <h2>Highlights</h2>
       <p class="note">From the latest snapshot.</p>
       <ul class="trends">
-        <li><span class="chip warn">▲ Filling fast</span><p><strong>Special Guest limit raised to 400.</strong> 121 registrations on Sep 24, its busiest day. 258 taken, 142 left.</p></li>
-        <li><span class="chip ok">✓ On track</span><p><strong>Invited Guests keeps growing.</strong> 55 on Sep 24, many in the evening. 287 registered, 213 seats left.</p></li>
-        <li><span class="chip slow">● Room left</span><p><strong>Karyakar limit set to 400.</strong> 183 registered, 19 of them on Sep 24. 217 seats left.</p></li>
-        <li><span class="chip slow">● Steady</span><p><strong>BKY is holding steady.</strong> 106 registered, 94 seats left.</p></li>
-        <li><span class="chip ok">✓ Timing</span><p><strong>Late morning and late evening are busiest.</strong> 11 AM is the peak hour of the week (122), followed by 10 AM and 9 PM (76 each). Overnight has been quiet: 7 since midnight.</p></li>
+        <li><span class="chip warn">▲ Filling fast</span><p><strong>Special Guest is three-quarters full.</strong> 295 of 400 taken, 105 left. 36 more on Sep 25.</p></li>
+        <li><span class="chip warn">▲ Filling fast</span><p><strong>Invited Guests had a strong Friday.</strong> 57 on Sep 25, mostly in the evening. 343 of 500 taken, 157 left.</p></li>
+        <li><span class="chip warn">▲ Filling fast</span><p><strong>Karyakar limit reduced to 300.</strong> 204 registered, 96 seats left.</p></li>
+        <li><span class="chip slow">● Steady</span><p><strong>BKY is holding steady.</strong> 112 registered, 88 seats left.</p></li>
+        <li><span class="chip ok">✓ Timing</span><p><strong>Evenings picked up on Sep 25.</strong> 4 PM and 10–11 PM were its busiest hours. Across the week, 11 AM leads (124), then 10 AM (83) and 9 PM (82).</p></li>
       </ul>
     </section>
     <section class="panel">
-      <h2>Sep 24, hour by hour</h2>
-      <p class="note">Thu, Sep 24 · Eastern time. Sep 25 so far: 7 registrations.</p>
+      <h2>Sep 25, hour by hour</h2>
+      <p class="note">Fri, Sep 25 · Eastern time. Sep 26 so far: 14 registrations.</p>
       <div class="tscroll"><table id="hourtable"></table></div>
     </section>
   </div>
@@ -172,7 +172,7 @@ const TYPES=[
   {key:"sg",name:"Special Guest",color:"var(--s1)",cap:400},
   {key:"ig",name:"Invited Guests",color:"var(--s2)",cap:500},
   {key:"bky",name:"BKY Admission",color:"var(--s3)",cap:200},
-  {key:"ky",name:"Karyakar Admission",color:"var(--s4)",cap:400}
+  {key:"ky",name:"Karyakar Admission",color:"var(--s4)",cap:300}
 ];
 const DAYS=[
   {d:"Sun, Sep 20",short:"Sep 20",sg:0,ig:8,bky:0,ky:0},
@@ -180,28 +180,30 @@ const DAYS=[
   {d:"Tue, Sep 22",short:"Sep 22",sg:56,ig:96,bky:71,ky:0},
   {d:"Wed, Sep 23",short:"Sep 23",sg:76,ig:83,bky:25,ky:162},
   {d:"Thu, Sep 24",short:"Sep 24",sg:121,ig:55,bky:10,ky:19},
-  {d:"Fri, Sep 25 (to 9 AM)",short:"Sep 25*",sg:2,ig:3,bky:0,ky:2}
+  {d:"Fri, Sep 25",short:"Sep 25",sg:36,ig:57,bky:3,ky:17},
+  {d:"Sat, Sep 26 (to 10 AM)",short:"Sep 26*",sg:3,ig:2,bky:3,ky:6}
 ];
 const HOURS=[
-  {h:"5–9 AM",sg:4,ig:12,ky:6,bky:0},
-  {h:"10 AM",sg:19,ig:3,ky:2,bky:1},
-  {h:"11 AM",sg:29,ig:6,ky:2,bky:0},
-  {h:"12 PM",sg:6,ig:4,ky:0,bky:0},
-  {h:"1 PM",sg:7,ig:2,ky:1,bky:0},
-  {h:"2 PM",sg:15,ig:0,ky:1,bky:0},
-  {h:"3 PM",sg:6,ig:1,ky:1,bky:2},
-  {h:"4 PM",sg:6,ig:2,ky:1,bky:0},
-  {h:"5 PM",sg:2,ig:3,ky:0,bky:1},
-  {h:"6 PM",sg:6,ig:5,ky:1,bky:0},
-  {h:"7 PM",sg:8,ig:1,ky:0,bky:4},
-  {h:"8 PM",sg:4,ig:2,ky:0,bky:2},
-  {h:"9 PM",sg:7,ig:8,ky:1,bky:0},
-  {h:"10–11 PM",sg:2,ig:6,ky:3,bky:0}
+  {h:"7–9 AM",sg:2,ig:5,ky:4,bky:0},
+  {h:"10 AM",sg:3,ig:0,ky:3,bky:0},
+  {h:"11 AM",sg:0,ig:1,ky:1,bky:0},
+  {h:"12 PM",sg:0,ig:5,ky:0,bky:0},
+  {h:"1 PM",sg:0,ig:2,ky:0,bky:0},
+  {h:"2 PM",sg:1,ig:3,ky:2,bky:1},
+  {h:"3 PM",sg:3,ig:1,ky:0,bky:0},
+  {h:"4 PM",sg:5,ig:8,ky:1,bky:1},
+  {h:"5 PM",sg:0,ig:2,ky:1,bky:0},
+  {h:"6 PM",sg:4,ig:5,ky:1,bky:0},
+  {h:"7 PM",sg:2,ig:4,ky:1,bky:0},
+  {h:"8 PM",sg:3,ig:3,ky:3,bky:0},
+  {h:"9 PM",sg:4,ig:2,ky:0,bky:0},
+  {h:"10 PM",sg:4,ig:9,ky:0,bky:1},
+  {h:"11 PM",sg:5,ig:7,ky:0,bky:0}
 ];
 const PROF=[
-  ["IT / Software",100],["Retired",70],["Healthcare / Medical",69],["Business / Management",54],
-  ["Finance / Accounting",47],["Engineering (non-IT)",40],["Self-employed / Owner",36],["Homemaker",34],
-  ["Student",23],["Education, Govt & more",26],["Other",46]
+  ["IT / Software",117],["Healthcare / Medical",82],["Retired",82],["Business / Management",62],
+  ["Finance / Accounting",49],["Engineering (non-IT)",46],["Homemaker",44],["Self-employed / Owner",43],
+  ["Student",29],["Education, Govt & more",26],["Other",58]
 ];
 const NS="http://www.w3.org/2000/svg";
 const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
@@ -264,7 +266,7 @@ TYPES.forEach(t=>{const s=document.createElement("span");s.innerHTML=`<i class="
 
 (function(){
   const host=document.getElementById("profchart");
-  const rowH=24,W=420,lw=180,m={t:4,r:34,b:4},H=m.t+m.b+PROF.length*rowH,max=100,iw=W-lw-m.r;
+  const rowH=24,W=420,lw=180,m={t:4,r:34,b:4},H=m.t+m.b+PROF.length*rowH,max=Math.ceil(Math.max(...PROF.map(p=>p[1]))/20)*20,iw=W-lw-m.r;
   const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,width:"100%",role:"img","aria-label":"Guest professions, number of people"},host);
   const tip=document.createElement("div");tip.className="tip";tip.hidden=true;host.appendChild(tip);
   const total=PROF.reduce((s,p)=>s+p[1],0);
